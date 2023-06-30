@@ -1,27 +1,21 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import Navbar from "./Navbar";
 import Orders from "./Orders";
+import Navbar from "./Navbar";
 
-function Routes(){
-return(
+function Routes() {
+  return (
     <BrowserRouter>
-    <Navbar/>
-    <Switch> 
+      <Navbar />
+      <Switch>
         <Route path="/orders">
-            <Orders/>
+          <Orders />
         </Route>
         <Route path="/">
-            <Home/>
+          <Home />
         </Route>
-
-    </Switch>
+      </Switch>
     </BrowserRouter>
-
-)
-
-
+  );
 }
-
 export default Routes;
-
