@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AsyncSelect from "react-select/async";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import React from "react";
@@ -7,10 +6,7 @@ import "leaflet/dist/leaflet.css";
 
 import { fetchLocalMapBox } from "../api";
 import { OrderLocationData } from "./types";
-const initialPosition = {
-  lat: -26.8586636,
-  lng: -48.7480956
-};
+
 
 type Place = {
   label?: string;
@@ -26,9 +22,7 @@ type Props = {
 };
 
 function OrderLocation({ onChangeLocation }: Props) {
-  const [address, setAddress] = useState<Place>({
-    position: initialPosition
-  });
+
   const loadOptions = async (inputValue: string, callback: (places: Place[]) => void) => {
     const response = await fetchLocalMapBox(inputValue);
 
@@ -52,7 +46,6 @@ function OrderLocation({ onChangeLocation }: Props) {
   
 
   const handleChangeSelect = (place: Place) => {
-    setAddress(place);
     onChangeLocation({
       latitude: place.position.lat,
       longitude: place.position.lng,
