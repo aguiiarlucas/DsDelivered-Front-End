@@ -7,6 +7,10 @@ import "leaflet/dist/leaflet.css";
 import { fetchLocalMapBox } from "../api";
 import { OrderLocationData } from "./types";
 
+const position = {
+  lat: -21.271294,
+  lng:-48.3181788
+}
 
 type Place = {
   label?: string;
@@ -61,23 +65,23 @@ function OrderLocation({ onChangeLocation }: Props) {
         </h3>
         <div className="filter-container">
           <AsyncSelect
-            placeholder="degite um endereço para entregar o pedido"
+            placeholder="digite um endereço para entregar o pedido"
             className="filter"
            loadOptions={loadOptions}
             onChange={(value) => handleChangeSelect(value as Place)}
           />
         </div>
-        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '400px', width: '100%' }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors"
-      />
-      <Marker position={[51.505, -0.09]}>
+        <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+    <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+    <Marker position={position}>
       <Popup>
         A pretty CSS3 popup. <br /> Easily customizable.
       </Popup>
-      </Marker>
-    </MapContainer>
+    </Marker>
+  </MapContainer>
 
       </div>
     </div>
